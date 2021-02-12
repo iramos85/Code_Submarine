@@ -1,1 +1,5 @@
-﻿
+﻿Build started...
+1>------ Build started: Project: Code_Submarine, Configuration: Debug Win32 ------
+1>Code_Submarine.cpp
+1>Code_Submarine.vcxproj -> C:\Users\iramos.USRGRAB\source\repos\Code_Submarine\Debug\Code_Submarine.exe
+========== Build: 1 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
