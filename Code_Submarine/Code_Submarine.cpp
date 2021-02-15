@@ -26,10 +26,10 @@ void PrintIntroduction(int Difficulty)
     std::cout << " engine of a Nuclear Nazi sub.\nYou must enter the correct code sequence to flood the first engine compartment!\n\n";
 }
 
-bool PlayGame(int Difficulty) 
+bool PlayGame(int Difficulty, int Tries) 
 {
 
-    PrintIntroduction(Difficulty);
+    PrintIntroduction(Difficulty && Tries);
 
     //declare 3 number code
     const int CodeA = 4;
@@ -53,7 +53,6 @@ bool PlayGame(int Difficulty)
     int GuessSum = GuessA + GuessB + GuessC;
     int GuessProduct = GuessA * GuessB * GuessC;
     int WrongAnswer = GuessSum != CodeSum && GuessProduct != CodeProduct;
-    int Tries = 3;
 
     if (GuessSum == CodeSum && GuessProduct == CodeProduct)
     {
@@ -65,9 +64,7 @@ bool PlayGame(int Difficulty)
         std::cout << "\n!! You hear the stomping of boots as Nazi Guards are closing in on your position. Time is running out, you have " << Tries << " attempts left!!\n\n";
         return false;
     }
-    else if (Tries == 0) {
-        std::cout << "\n!! They've located you! Herr Furchtbar will not be merciful.....\n\n";
-    }
+   
 }
 
 int main()
@@ -80,7 +77,7 @@ int main()
 
     while (LevelDifficulty <= MaxDifficulty && Tries >= 1) //loop game until all levels are completed
     {
-        bool bLevelComplete = PlayGame(LevelDifficulty);
+        bool bLevelComplete = PlayGame(LevelDifficulty, Tries);
         std::cin.clear(); //Clear any errors
         std::cin.ignore(); //Discards the buffer
 
@@ -89,18 +86,43 @@ int main()
             ++LevelDifficulty;
         }
         else {
-            LevelDifficulty;
             --Tries;
         }
     }
+
+    if (LevelDifficulty >= 5 && Tries >= 1)
+    {
+        std::cout << "\n You've successfully flooded the submarine. As rivets pop and the hull groans under the increasing water pressure, you feel a sense of calm as you know you've saved countless lives and taken down Hitler's terrible weapon. Well done Agent!\n";
+        std::cout << "       .---.\n";
+        std::cout << "  ___ /_____|\n";
+        std::cout << " //.-`( '.' )\n";
+        std::cout << "/ /    |_-_|_\n";
+        std::cout << "\ `-.-`'V'/ / -.\n";
+        std::cout << " `.__,  |/ / ,  |\n";
+    }
+    else if (Tries == 0) 
+    {
+        std::cout << "\n!! They've located you! Herr Furchtbar will not be merciful.....\n\n";
+        std::cout << "         .e$$$$e.\n";
+        std::cout << "       e$$$$$$$$$$e\n";
+        std::cout << "      $$$$$$$$$$$$$$\n";
+        std::cout << "     d$$$$$$$$$$$$$$b\n";
+        std::cout << "     $$$$$$$$$$$$$$$$\n";
+        std::cout << "     $$$$$$$$$$$$$$$$\n";
+        std::cout << "     $$$$$$$$$$$$$$$$\n";
+        std::cout << "     $$$' '$$$$' '$$$\n";
+        std::cout << "     $$F   4$$F   4$$\n";
+        std::cout << "     '$F   4$$F   4$'\n";
+        std::cout << "      $$   $$$$   $P\n";
+        std::cout << "     4$$$$$' ^ $$$$$\n";
+        std::cout << "      $$$$F    4$$$$\n";
+        std::cout << "        '$$$ee$$$'\n";
+        std::cout << "        . *$$$$F4\n";
+        std::cout << "         $     .$\n";
+        std::cout << "         '$$$$$$'\n";
+        std::cout << "          ^$$$$\n\n\n";
+    }
     
-    std::cout << "\n You've successfully flooded the submarine. As rivets pop and the hull groans under the increasing water pressure, you feel a sense of calm as you know you've saved countless lives and taken down Hitler's terrible weapon. Well done Agent.!\n";
-    std::cout << "       .---.\n";
-    std::cout << "  ___ /_____|\n";
-    std::cout << " //.-`( '.' )\n";
-    std::cout << "/ /    |_-_|_\n";
-    std::cout << "\ `-.-`'V'/ / -.\n";
-    std::cout << " `.__,  |/ / ,  |\n";
 
     system("PAUSE");
 }
